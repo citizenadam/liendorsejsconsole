@@ -1,15 +1,28 @@
+// Function to get all valid "Endorse" buttons
+function getEndorseButtons() {
+    return Array.from(document.querySelectorAll('button'))
+        .filter(button => {
+            const buttonText = button.textContent.trim();
+            const isVisible = button.offsetParent !== null;
+            const isNotDisabled = !button.disabled;
+            return buttonText === 'Endorse' && isVisible && isNotDisabled;
+        });
+}
+
 // Function to click all "Endorse" buttons with a delay
 async function clickEndorseButtons() {
     let endorsedCount = 0;
     let retries = 0;
     const maxRetries = 3;
 
+    const initialButtons = getEndorseButtons();
+    console.log(`Found ${initialButtons.length} Endorse buttons initially`);
+
     while (retries < maxRetries) {
-        const endorseButtons = Array.from(document.querySelectorAll('button'))
-            .filter(button => button.textContent.trim() === 'Endorse');
+        const endorseButtons = getEndorseButtons();
         
         if (endorseButtons.length > 0) {
-            console.log(`Found ${endorseButtons.length} Endorse buttons`);
+            console.log(`Current Endorse buttons: ${endorseButtons.length}`);
             const button = endorseButtons[0]; // Focus on the first button
             try {
                 await scrollIntoViewIfNeeded(button);
@@ -29,7 +42,7 @@ async function clickEndorseButtons() {
             break;
         }
     }
-    console.log(`Finished processing. Endorsed ${endorsedCount} skills.`);
+    console.log(`Finished processing. Endorsed ${endorsedCount} skills out of ${initialButtons.length} initial buttons.`);
 }
 
 // Function to ensure a button click is effective
