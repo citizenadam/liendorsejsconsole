@@ -1,6 +1,6 @@
 This can be run from the console by pushing (usuall) F12 in the browser and selecting the console.
 
-Update 9/30/24:  This stopped working a couple of weeks after using it, kind of flattering that linkedin changed things up just for this script.  I've updated it using Claude since I don't know much about anti automation coding.  It works again.
+Update 9/30/24:  This stopped working a couple of weeks after using it, kind of flattering that linkedin changed things up just for this script.  I've updated it using Claude since I don't know much about anti automation coding.  It works again but is a bit glichy in that it sees more or less endorsements than actually exist but will eventually click them all.
 
 Usage
 
